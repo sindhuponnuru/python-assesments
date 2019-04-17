@@ -1,0 +1,57 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+ 
+    def is_empty(self):
+        return self.items == []
+ 
+    def push(self, data):
+        self.items.append(data)
+ 
+    def pop(self):
+        return self.items.pop()
+ 
+ 
+s = Stack()
+exp = input('Please enter the expression: ')
+ 
+for c in exp:
+    if c == '('or c == '[' or c == '{':
+        s.push(1)
+    elif c == ')' or c == ']' or c == '}':
+        if s.is_empty():
+            is_balanced = False
+            break
+        s.pop()
+else:
+    if s.is_empty():
+        is_balanced = True
+    elif s.is_empty():
+        is_balanced = None
+    else:
+      is_balanced = False
+ 
+if is_balanced is True:
+    print(exp)
+elif is_balanced is False:
+    for ch1 in range(len(exp)-1,-1,-1):
+        ch=exp[ch1]
+        if ch=="{":
+            exp=exp+"}"
+        elif ch=="(":
+            exp=exp+")"
+        elif ch=="[":
+            exp=exp+"]"
+
+elif is_balanced is None:
+    for ch1 in range(0,len(exp)):
+      str2=''
+      l = exp[ch1]
+      if l == '{' or l == '[' or l == '(':
+        str2 = str2 + l 
+    print(str2, end = "")
+        
+
+        
+print(exp)
+  
